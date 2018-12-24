@@ -93,6 +93,6 @@ rm(ColnamesCleanup, columnNames, columnNamesProp)
 if(!isTRUE("dplyr" %in% installed.packages())) {install.packages("dplyr")}
 library(dplyr)
 TidyTrimmedSet <- finalSetTrimmed %>% group_by(Subject, Activity) %>% summarize_all(mean) 
-write.table(TidyTrimmedSet, file = "./Tidy_data.txt", col.names = T)
+write.table(TidyTrimmedSet, file = "./Tidy_data.txt", col.names = T, row.names = F)
 
 
