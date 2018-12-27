@@ -66,7 +66,7 @@ replacement <- function(x){
   x
 }
 
-finalSet[, 2] <- lapply(finalSet[, 2], replacement)
+finalSet[, 2] <- replacement(as.vector(finalSet[, 2]))
 
 ## Step 5: Now we extract the means and standard deviations and continue making the dataset more user-friendly
 
@@ -93,6 +93,7 @@ rm(ColnamesCleanup, columnNames, columnNamesProp)
 if(!isTRUE("dplyr" %in% installed.packages())) {install.packages("dplyr")}
 library(dplyr)
 TidyTrimmedSet <- finalSetTrimmed %>% group_by(Subject, Activity) %>% summarize_all(mean) 
+str(TidyTrimmedSet)
 write.table(TidyTrimmedSet, file = "./Tidy_data.txt", col.names = T, row.names = F)
 
 
